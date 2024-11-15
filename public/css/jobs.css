@@ -1,0 +1,18 @@
+.bg-theme {
+    background-color: #0e0d23;
+    color: #fff;
+    height: 100vh;
+}
+
+.custom-card {
+    background-color: #0e0d23 !important;
+    border: 1px solid #fff !important;
+
+}
+
+.skills {
+    margin: 2px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+}
