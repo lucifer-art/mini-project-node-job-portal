@@ -17,12 +17,16 @@ export default class Jobs {
     addApplicant(req, res, next) {
         const jobId = parseInt(req.params.jobId);
         const job = getJobById(jobId);
-        console.log(req.body);
-        console.log(req.file);
-        // if(!job) {
-        //     return res.status(404).send('Job not found');
-        // }
-        // job.applicants.push(req.body);
-        // return res.status(201).send('Applicant added successfully');
+        const applicant = {
+            name: req.body.name,
+            email: req.body.email,
+            contact: req.body.contact,
+            resumePath: req.file.path
+        }
+        if(!job) {
+            return res.status(404).send('Job not found');
+        }
+        job.applicants.push(req.body);
+        return res.status(201).redirect('/jobs');
     }
 }
