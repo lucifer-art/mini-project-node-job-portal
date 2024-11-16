@@ -2,7 +2,7 @@ import { getJobs, getJobById } from '../models/jobs.model.js';
 
 export default class Jobs {
     getJobsPage(req, res, next) {
-        return res.render('jobs', {jobs: getJobs()})
+        return res.render('jobs', {jobs: getJobs(), userEmail: req.session.userEmail, userName: req.session.userName})
     }
 
     getJob(req, res, next) {
@@ -15,9 +15,11 @@ export default class Jobs {
     }
 
     addApplicant(req, res, next) {
+        const count = 1;
         const jobId = parseInt(req.params.jobId);
         const job = getJobById(jobId);
         const applicant = {
+            applicantid: count++,
             name: req.body.name,
             email: req.body.email,
             contact: req.body.contact,
@@ -26,7 +28,7 @@ export default class Jobs {
         if(!job) {
             return res.status(404).send('Job not found');
         }
-        job.applicants.push(req.body);
+        job.applicants.push(applicant);
         return res.status(201).redirect('/jobs');
     }
 }
