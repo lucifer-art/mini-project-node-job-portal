@@ -50,6 +50,7 @@ app.post('/jobs/:jobId/delete', jobs.deleteJobById);
 
 //applicants
 app.post('/apply/:jobId', uploadFile.single('resume'), jobs.addApplicant);
+app.get('/jobs/:jobId/applicants', jobs.getApplicant);
 
 
 export default app;
