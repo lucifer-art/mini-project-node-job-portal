@@ -29,7 +29,7 @@
             </div>
             <% if(locals.userEmail) { %>
               <div style="margin-left: 12px;">
-                <i style="font-size: 25px; color: dodgerblue; cursor: pointer;" class="fa-solid fa-pen-to-square"></i>
+                <a href="/jobs/<%= job.id %>/update"><i style="font-size: 25px; color: dodgerblue; cursor: pointer;" class="fa-solid fa-pen-to-square"></i></a>
                 <i style="font-size: 25px;color: red; cursor: pointer;" class="fa-solid fa-eraser"
                   data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
               </div>
@@ -78,7 +78,7 @@
                 </path>
               </svg>
               Number of openings <%= job.numberofopenings %></span>
-            <a style="text-decoration: none; color: rgb(215, 20, 85)" href="/error">
+            <a style="text-decoration: none; color: rgb(215, 20, 85)" href="/404">
               <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                   class="bi bi-people-fill" viewBox="0 0 16 16">
                   <path
@@ -179,7 +179,6 @@
     </div>
   </div>
 </div>
-
 <!-- Delete Post -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">

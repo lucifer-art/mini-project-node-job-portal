@@ -32,7 +32,7 @@ app.use(express.urlencoded({ extended: true}));
 
 //api handling
 app.get('/', home.getHome);
-app.get('/error', home.getErrorPage);
+app.get('/404', home.getErrorPage);
 
 //login handling
 app.get('/login', login.getLoginPage);
@@ -41,10 +41,15 @@ app.get('/logout', login.logout);
 
 //jobs API handling
 app.get('/jobs', jobs.getJobsPage);
-app.get('/modifyjob', jobs.getNewJobs);
-app.get('/jobs/:jobId', jobs.getJob);
-app.post('/apply/:jobId', uploadFile.single('resume'), jobs.addApplicant);
 app.post('/job',jobs.addJob);
+app.get('/jobs/:jobId', jobs.getJob);
+app.get('/modifyjob', jobs.getNewJobs);
+app.get('/jobs/:jobId/update', jobs.updateJobByIdPage);
+app.post('/jobs/:jobId/update', jobs.updateJobById);
 app.post('/jobs/:jobId/delete', jobs.deleteJobById);
+
+//applicants
+app.post('/apply/:jobId', uploadFile.single('resume'), jobs.addApplicant);
+
 
 export default app;

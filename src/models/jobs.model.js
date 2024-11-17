@@ -1,12 +1,14 @@
+import moment from "moment";
+
 const jobs = [
   {
     id: 1,
-    jobcategory: "Actively hiring",
-    jobdesignation: "SDE",
+    jobcategory: "Tech",
+    jobdesignation: "MERN Developer",
     joblocation: "Gurgaon HR IND Remote",
     companyname: "Coding Ninja",
     salary: "14-20lpa",
-    applyby: "30 Dec 2024",
+    applyby: moment(new Date("11/01/2025")).format('YYYY-MM-DD'),
     skillsrequired: [
       "React",
       "NodeJS",
@@ -22,12 +24,12 @@ const jobs = [
   },
   {
     id: 2,
-    jobcategory: "Actively hiring",
-    jobdesignation: "Angular Developer",
+    jobcategory: "Tech",
+    jobdesignation: "Front-End Developer",
     joblocation: "Pune IND On-Site",
     companyname: "Go Digit",
     salary: "6-10lpa",
-    applyby: "30 Dec 2024",
+    applyby: moment(new Date("11/01/2025")).format('YYYY-MM-DD'),
     skillsrequired: ["Angular", "JS", "SQL", "Express", "AWS"],
     numberofopenings: 5,
     jobposted: "11/7/2024, 12:05:36 AM",
@@ -35,12 +37,12 @@ const jobs = [
   },
   {
     id: 3,
-    jobcategory: "Actively hiring",
-    jobdesignation: "SDE",
+    jobcategory: "Tech",
+    jobdesignation: "MERN Developer",
     joblocation: "Bangalore IND",
     companyname: "Juspay",
     salary: "20-26lpa",
-    applyby: "30 Dec 2024",
+    applyby: moment(new Date("11/01/2025")).format('YYYY-MM-DD'),
     skillsrequired: [
       "React",
       "NodeJS",
@@ -72,13 +74,31 @@ export function addJob(req) {
     joblocation: req.job_location,
     companyname: req.company_name,
     salary: req.salary,
-    applyby: req.apply_by,
+    applyby: moment(req.apply_by).format('YYYY-MM-DD'),
     skillsrequired: req.skills_required,
     numberofopenings: req.number_of_openings,
     jobposted: new Date().toISOString(),
     applicants: [],
   };
   jobs.push(job);
+}
+
+export function updateJob(jobId, req) {
+  const index = jobs.findIndex((job) => job.id == jobId);
+  const job = {
+    id: jobId,
+    jobcategory: req.job_category,
+    jobdesignation: req.job_designation,
+    joblocation: req.job_location,
+    companyname: req.company_name,
+    salary: req.salary,
+    applyby: moment(req.apply_by).format('YYYY-MM-DD'),
+    skillsrequired: req.skills_required,
+    numberofopenings: req.number_of_openings,
+    jobposted: new Date().toISOString(),
+    applicants: [],
+  }
+  jobs[index] = job;
 }
 
 export function deleteJob(jobId) {
