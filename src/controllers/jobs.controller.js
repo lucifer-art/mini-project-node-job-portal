@@ -1,8 +1,17 @@
-import { getJobs, getJobById } from '../models/jobs.model.js';
+import { getJobs, getJobById, addJob, deleteJob } from '../models/jobs.model.js';
 
 export default class Jobs {
     getJobsPage(req, res, next) {
         return res.render('jobs', {jobs: getJobs(), userEmail: req.session.userEmail, userName: req.session.userName})
+    }
+
+    getNewJobs(req, res, next) {
+        if(req.session.userEmail) {
+            return res.render('modifiyJob', {userEmail: req.session.userEmail, userName: req.session.userName});
+        } else {
+            return res.redirect('/login');
+        }
+        
     }
 
     getJob(req, res, next) {
@@ -11,7 +20,12 @@ export default class Jobs {
         if(!job) {
             return res.status(404).send('Job not found');
         }
-        return res.render('job', {job});
+        return res.render('job', {job, userEmail: req.session.userEmail, userName: req.session.userName});
+    }
+
+    addJob(req, res, next) {
+        addJob(req.body);
+        return res.status(201).redirect('/jobs');
     }
 
     addApplicant(req, res, next) {
@@ -29,6 +43,12 @@ export default class Jobs {
             return res.status(404).send('Job not found');
         }
         job.applicants.push(applicant);
+        return res.status(201).redirect('/jobs');
+    }
+
+    deleteJobById(req, res, next) {
+        const jobId = parseInt(req.params.jobId);
+        deleteJob(jobId);
         return res.status(201).redirect('/jobs');
     }
 }
