@@ -1,3 +1,14 @@
+<style>
+    .lbtn {
+        background-color: #ff2c90;
+        color: #ffffff;
+    }
+
+    .lbtn:hover {
+        background-color: #da096a;
+        color: #ffffff;
+    }
+</style>
 <div class="bg-color">
     <div class="container">
         <div class="row">
@@ -8,13 +19,73 @@
                     <div class="heading-5">Get discovered. Get Hired.</div>
                     <div>
                         <a href="/jobs" type="button" class="button btn btn-primary">I'm A Job Seeker</a>
-                        <a type="button" class="button btn btn-primary">I'm A Recruiter</a>
+                        <a type="button" class="button btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#signupModal">I'm A Recruiter</a>
                     </div>
                 </div>
             </div>
             <div class="col-5">
-              <img src="https://easily-deploy.onrender.com/images/banner.png" alt="banner">
+                <img src="https://easily-deploy.onrender.com/images/banner.png" alt="banner" />
             </div>
-          </div>
+        </div>
+    </div>
+</div>
+
+<!-- Sign up modal -->
+<div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">
+                    Experience Job Search
+                </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="/register" method="post" class="p-2">
+                    <div class="mb-3">
+                        <div class="input-group">
+                            <span class="input-group-text">Name</span>
+                            <input required="" name="name" type="text" aria-label="name" class="form-control"
+                                placeholder="enter your name" />
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="input-group">
+                            <span class="input-group-text">Email</span>
+                            <input required="" name="email" type="email" aria-label="email" class="form-control"
+                                placeholder="enter your email" />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="input-group">
+                            <span class="input-group-text">Password</span>
+                            <input required="" name="password" type="password" aria-label="password"
+                                class="form-control" placeholder="enter your password" />
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-md mt-2 lbtn">Register</button>
+                </form>
+            </div>
+            <div class="modal-footer d-flex align-items-center justify-content-between">
+                <div class="left d-flex flex-row align-items-center justify-content-center">
+                    <!-- Button trigger login modal -->
+                    <span style="margin-right: 8px">Already registered?</span>
+                    <button type="button" class="btn btn-sm px-3 btn-outline-success" data-bs-toggle="modal"
+                        data-bs-target="#loginModal">
+                        login
+                    </button>
+                </div>
+                <div class="right">
+                    <a href="#"><i style="font-size: 25px" class="text-primary fa-brands fa-twitter"></i></a>
+                    <a href="#"><i style="font-size: 25px" class="text-danger fa-brands fa-instagram"></i></a>
+                    <a href="#"><i style="font-size: 25px" class="text-info fa-brands fa-facebook"></i></a>
+                    <a href="#"><i style="font-size: 25px" class="text-success fa-brands fa-whatsapp"></i></a>
+                    <a href="#"><i style="font-size: 25px" class="text-primary fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

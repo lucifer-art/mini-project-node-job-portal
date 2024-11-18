@@ -6,6 +6,12 @@ export default class Login {
     return res.render("login", {});
   };
 
+  postRegister = (req, res, next) => {
+    const {name, email, password} = req.body;
+    UserModel.add(name, email, password);
+    res.redirect("/login");
+  }
+
   postLogin(req, res) {
     const { email, password } = req.body;
     const user = UserModel.isValidUser(email, password);

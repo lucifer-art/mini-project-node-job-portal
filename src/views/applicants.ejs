@@ -12,19 +12,26 @@
                 </tr>
             </thead>
             <tbody>
-                <% job.applicants.forEach((applicant) => { %>
+                <% job.applicants.forEach((applicant)=> { %>
                     <tr>
-                        <th scope="row"><%= applicant.applicantid %></th>
-                        <td><%= applicant.name %></td>
-                        <td><%= applicant.email %></td>
-                        <td><%= applicant.contact %></td>
+                        <th scope="row">
+                            <%= applicant.applicantid %>
+                        </th>
                         <td>
-                            <a class="btn btn-sm btn-primary" href="#"
-                                target="_blank">view</a>
+                            <%= applicant.name %>
+                        </td>
+                        <td>
+                            <%= applicant.email %>
+                        </td>
+                        <td>
+                            <%= applicant.contact %>
+                        </td>
+                        <td>
+                            <a class="btn btn-sm btn-primary" href="#" target="_blank">view</a>
                         </td>
                         <td><i class="fa-solid fa-trash"></i></td>
                     </tr>
-                <% }) %>
+                    <% }) %>
             </tbody>
         </table>
     </div>

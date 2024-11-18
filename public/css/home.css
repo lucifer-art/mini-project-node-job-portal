@@ -25,6 +25,16 @@
     margin-top: 8rem;
 }
 
+.lbtn {
+    background-color: #FF2C90;
+    color: #FFFFFF;
+}
+
+.lbtn:hover {
+    background-color: #da096a;
+    color: #FFFFFF;
+}
+
 .button {
     font-size: 1.25rem !important;
     font-weight: 300 !important;
@@ -38,19 +48,3 @@
     color: #fff !important;
 }
 
-.form-box {
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    border-top: 5px solid #181642;
-    border-left: 3px solid #181642;
-    border-radius: 10px;
-}
-
-.lbtn {
-    background-color: #FF2C90;
-    color: #FFFFFF;
-}
-
-.lbtn:hover {
-    background-color: #da096a;
-    color: #FFFFFF;
-}

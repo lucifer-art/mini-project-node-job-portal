@@ -35,6 +35,7 @@ app.get('/', home.getHome);
 app.get('/404', home.getErrorPage);
 
 //login handling
+app.post('/register', login.postRegister);
 app.get('/login', login.getLoginPage);
 app.post('/login', login.postLogin);
 app.get('/logout', login.logout);
