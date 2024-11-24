@@ -29,11 +29,12 @@
             </div>
             <% if(locals.userEmail) { %>
               <div style="margin-left: 12px;">
-                <a href="/jobs/<%= job.id %>/update"><i style="font-size: 25px; color: dodgerblue; cursor: pointer;" class="fa-solid fa-pen-to-square"></i></a>
+                <a href="/jobs/<%= job.id %>/update"><i style="font-size: 25px; color: dodgerblue; cursor: pointer;"
+                    class="fa-solid fa-pen-to-square"></i></a>
                 <i style="font-size: 25px;color: red; cursor: pointer;" class="fa-solid fa-eraser"
-                  data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
+                  data-bs-toggle="modal" data-bs-target="#deleteModal"></i>
               </div>
-              <% } %>
+    <% } %>
           </div>
           <h5 class="my-1">
             <%= job.companyname %>
@@ -79,7 +80,7 @@
               </svg>
               Number of openings <%= job.numberofopenings %></span>
             <% if(locals.userEmail) { %>
-              <% if(job.applicants.length > 0) { %>
+              <% if(job.applicants.length> 0) { %>
                 <a style="text-decoration: none; color: rgb(215, 20, 85)" href="/jobs/<%= job.id %>/applicants">
                   <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                       class="bi bi-people-fill" viewBox="0 0 16 16">
@@ -89,28 +90,28 @@
                     </svg>
                     Applicants <%= job.applicants.length %></span>
                 </a>
-              <% } else { %>
-                <a style="text-decoration: none; color: rgb(215, 20, 85)" href="#">
-                  <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                      class="bi bi-people-fill" viewBox="0 0 16 16">
-                      <path
-                        d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z">
-                      </path>
-                    </svg>
-                    Applicants <%= job.applicants.length %></span>
-                </a>
-              <% } %>
-            <% } else { %>
-              <a style="text-decoration: none; color: rgb(215, 20, 85)" href="/404">
-                <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                    class="bi bi-people-fill" viewBox="0 0 16 16">
-                    <path
-                      d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z">
-                    </path>
-                  </svg>
-                  Applicants <%= job.applicants.length %></span>
-              </a>
-            <% } %>
+                <% } else { %>
+                  <a style="text-decoration: none; color: rgb(215, 20, 85)" href="#">
+                    <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-people-fill" viewBox="0 0 16 16">
+                        <path
+                          d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z">
+                        </path>
+                      </svg>
+                      Applicants <%= job.applicants.length %></span>
+                  </a>
+                  <% } %>
+                    <% } else { %>
+                      <a style="text-decoration: none; color: rgb(215, 20, 85)" href="/404">
+                        <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-people-fill" viewBox="0 0 16 16">
+                            <path
+                              d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z">
+                            </path>
+                          </svg>
+                          Applicants <%= job.applicants.length %></span>
+                      </a>
+                      <% } %>
           </div>
 
           <div class="container">
@@ -125,7 +126,7 @@
               <button data-bs-toggle="modal" data-bs-target="#applyModal" class="btn btn-md btn-primary px-5 my-2">
                 Apply Now
               </button>
-            <% } %>
+              <% } %>
           </div>
         </div>
         <!-- job posted -->
@@ -156,40 +157,45 @@
             <h4 style="color: #181642" class="text-center mb-3">
               apply in less than 1 minute
             </h4>
-            <form action="/apply/<%= job.id %>" method="post" enctype="multipart/form-data">
-              <div class="mb-3">
-                <div class="input-group">
-                  <span class="input-group-text">Name</span>
-                  <input required="" name="name" type="text" aria-label="First name" class="form-control"
-                    placeholder="enter your name">
-                </div>
+            <% if(errorMessage) { %>
+              <div class="alert alert-danger" role="alert">
+                <%= errorMessage %>
               </div>
+              <% } %>
+                <form action="/apply/<%= job.id %>" method="post" enctype="multipart/form-data">
+                  <div class="mb-3">
+                    <div class="input-group">
+                      <span class="input-group-text">Name</span>
+                      <input required="" name="name" type="text" aria-label="First name" class="form-control"
+                        placeholder="enter your name" value="<%= formData?.name || '' %>">
+                    </div>
+                  </div>
 
-              <div class="mb-3">
-                <div class="input-group">
-                  <span class="input-group-text">Email</span>
-                  <input required="" name="email" type="email" aria-label="email" class="form-control"
-                    placeholder="enter your email">
-                </div>
-              </div>
+                  <div class="mb-3">
+                    <div class="input-group">
+                      <span class="input-group-text">Email</span>
+                      <input required="" name="email" type="email" aria-label="email" class="form-control"
+                        placeholder="enter your email" value="<%= formData?.email || '' %>">
+                    </div>
+                  </div>
 
-              <div class="mb-3">
-                <div class="input-group">
-                  <span class="input-group-text">Contact</span>
-                  <input required="" name="contact" type="tel" aria-label="First name" class="form-control"
-                    placeholder="+91 ____ __ ____">
-                </div>
-              </div>
+                  <div class="mb-3">
+                    <div class="input-group">
+                      <span class="input-group-text">Contact</span>
+                      <input required="" name="contact" type="tel" aria-label="First name" class="form-control"
+                        placeholder="+91 ____ __ ____" value="<%= formData?.contact || '' %>">
+                    </div>
+                  </div>
 
-              <div class="input-group mb-3">
-                <label class="input-group-text" for="inputGroupFile01">Resume</label>
-                <input name="resume" type="file" class="form-control" id="inputGroupFile01" required="">
-              </div>
-
-              <button class="w-100 mb-3 mt-2 btn btn-md btn-success" type="submit">
-                Submit
-              </button>
-            </form>
+                  <div class="input-group mb-3">
+                    <label class="input-group-text" for="inputGroupFile01">Resume</label>
+                    <input name="resume" type="file" class="form-control" id="inputGroupFile01" required="">
+                  </div>
+                  <input type="hidden" id="showModal" value="<%= showModal %>">
+                  <button class="w-100 mb-3 mt-2 btn btn-md btn-success" type="submit">
+                    Submit
+                  </button>
+                </form>
           </div>
           <!-- form end  -->
         </div>
@@ -204,7 +210,7 @@
   </div>
 </div>
 <!-- Delete Post -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -226,15 +232,22 @@
   </div>
 </div>
 <script>
-  function deleteJob(id) {
-    const jobId = Number(id);
-    fetch(`/jobs/${jobId}/delete`, {
-      method: "POST",
-    }).then((res) => {
-      if (res.ok) {
-        console.log("sdfrver", res);
-        window.location.href = "/jobs";
-      }
-    });
+  const showModalValue = document.getElementById('showModal').value === 'true';
+  if (showModalValue) {
+    const modal = new bootstrap.Modal(document.getElementById('applyModal'));
+    modal.show();
   }
+</script>
+<script>
+    function deleteJob(id) {
+      const jobId = Number(id);
+      fetch(`/jobs/${jobId}/delete`, {
+        method: "POST",
+      }).then((res) => {
+        if (res.ok) {
+          console.log("sdfrver", res);
+          window.location.href = "/jobs";
+        }
+      });
+    }
 </script>

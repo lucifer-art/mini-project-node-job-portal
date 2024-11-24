@@ -25,16 +25,6 @@
     margin-top: 8rem;
 }
 
-.lbtn {
-    background-color: #FF2C90;
-    color: #FFFFFF;
-}
-
-.lbtn:hover {
-    background-color: #da096a;
-    color: #FFFFFF;
-}
-
 .button {
     font-size: 1.25rem !important;
     font-weight: 300 !important;

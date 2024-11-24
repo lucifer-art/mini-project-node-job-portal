@@ -1,3 +1,4 @@
+import { errorMessage } from "../middlewares/validation.middleware.js";
 import {
   getJobs,
   getJobById,
@@ -5,6 +6,15 @@ import {
   deleteJob,
   updateJob,
 } from "../models/jobs.model.js";
+import nodemailer from 'nodemailer';
+
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'shivangfuture@gmail.com',
+    pass: 'ynrtbzyztvlpvnho',
+  },
+})
 
 export default class Jobs {
   getJobsPage(req, res, next) {
@@ -36,6 +46,9 @@ export default class Jobs {
       job,
       userEmail: req.session.userEmail,
       userName: req.session.userName,
+      errorMessage: '',
+      formData: {},
+      showModal: false
     });
   }
 
@@ -84,12 +97,24 @@ export default class Jobs {
       name: req.body.name,
       email: req.body.email,
       contact: req.body.contact,
-      resumePath: req.file.path,
+      resumePath: req.body.file,
     };
-    console.log("fyygf", applicant);
     if (!job) {
       return res.status(404).send("Job not found");
     }
+    const mailOptions = {
+      from: 'shivangfuture@gmail.com',
+      to: req.body.email,
+      subject: 'Confirmation for job on Job Search',
+      text: 'Congratulations! Your application has been sent to recruiter successfully.'
+    }
+    transporter.sendMail(mailOptions, (err, data) => {
+      if (err) {
+        console.log('Error occurred while sending mail:', err);
+      } else {
+        console.log('Mail sent successfully:', data.response);
+      }
+    })
     job.applicants.push(applicant);
     return res.status(201).redirect("/jobs");
   }

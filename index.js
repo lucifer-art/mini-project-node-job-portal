@@ -1,3 +1,12 @@
+/**
+ * Initializes and configures an Express application for a job portal.
+ * 
+ * This function sets up the Express application with various middleware,
+ * configures session handling, sets the view engine, and defines routes
+ * for home, login, jobs, and applicant-related functionalities.
+ * 
+ * @returns {Object} The configured Express application instance.
+ */
 import express from 'express';
 import expressEjsLayouts from 'express-ejs-layouts';
 import Home from './src/controllers/home.controller.js';
@@ -7,6 +16,9 @@ import path from 'path';
 import { uploadFile } from './src/middlewares/file-upload.middleware.js';
 import session from 'express-session';
 import cookieParser from 'cookie-parser';
+import { setLastVisit } from './src/middlewares/lastVisit.middleware.js';
+import { auth } from './src/middlewares/auth.middleware.js';
+import validateRequest from './src/middlewares/validation.middleware.js';
 
 const app = express();
 const home = new Home();
@@ -41,17 +53,16 @@ app.post('/login', login.postLogin);
 app.get('/logout', login.logout);
 
 //jobs API handling
-app.get('/jobs', jobs.getJobsPage);
-app.post('/job',jobs.addJob);
+app.get('/jobs',setLastVisit, jobs.getJobsPage);
 app.get('/jobs/:jobId', jobs.getJob);
-app.get('/modifyjob', jobs.getNewJobs);
-app.get('/jobs/:jobId/update', jobs.updateJobByIdPage);
-app.post('/jobs/:jobId/update', jobs.updateJobById);
-app.post('/jobs/:jobId/delete', jobs.deleteJobById);
+app.get('/modifyjob', auth, jobs.getNewJobs);
+app.get('/jobs/:jobId/update', auth, jobs.updateJobByIdPage);
+app.post('/job', auth, jobs.addJob);
+app.post('/jobs/:jobId/update', auth, jobs.updateJobById);
+app.post('/jobs/:jobId/delete', auth, jobs.deleteJobById);
 
 //applicants
-app.post('/apply/:jobId', uploadFile.single('resume'), jobs.addApplicant);
-app.get('/jobs/:jobId/applicants', jobs.getApplicant);
-
+app.post('/apply/:jobId', uploadFile.single('resume'), validateRequest, jobs.addApplicant);
+app.get('/jobs/:jobId/applicants', auth, jobs.getApplicant);
 
 export default app;
